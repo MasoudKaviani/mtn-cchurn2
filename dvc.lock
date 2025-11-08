@@ -1,0 +1,74 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: C:\ProgramData\anaconda3\python.exe src/prepare.py
+    deps:
+    - path: data/telecomchurn.csv
+      hash: md5
+      md5: 6c12fa0b9ae35780943fa0bc5b34ec93
+      size: 36711
+    - path: src/prepare.py
+      hash: md5
+      md5: 9e3e35cbaddb05da98e83b622227506d
+      size: 802
+    params:
+      params.yaml:
+        prepare:
+          test_size: 0.2
+          random_state: 42
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: b99233b7d2b74f4b747c337fca7ee91b
+      size: 6649
+    - path: data/processed/train.csv
+      hash: md5
+      md5: cdc1dfeaa34adc8cc0baa684ee50ca98
+      size: 26181
+  train:
+    cmd: C:\ProgramData\anaconda3\python.exe src/train.py
+    deps:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: cdc1dfeaa34adc8cc0baa684ee50ca98
+      size: 26181
+    - path: src/train.py
+      hash: md5
+      md5: 2a8b5308d7ac4de78fa97d40f2223bd9
+      size: 717
+    params:
+      params.yaml:
+        train:
+          model_type: random_forest
+          n_estimators: 200
+          max_depth: 10
+          random_state: 42
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 7130a790a4915208eba043c36455395c
+      size: 7013342
+  evaluate:
+    cmd: C:\ProgramData\anaconda3\python.exe src/evaluate.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: b99233b7d2b74f4b747c337fca7ee91b
+      size: 6649
+    - path: models/model.pkl
+      hash: md5
+      md5: 7130a790a4915208eba043c36455395c
+      size: 7013342
+    - path: src/evaluate.py
+      hash: md5
+      md5: 46c6b28396211597132dd017ba9a1cd6
+      size: 927
+    params:
+      params.yaml:
+        evaluate:
+          metrics_file: metrics.json
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 232fc21a164a9517bbc27eec210e0b56
+      size: 144

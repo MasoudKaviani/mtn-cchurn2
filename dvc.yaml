@@ -1,6 +1,6 @@
 stages:
   prepare:
-    cmd: python src/prepare.py
+    cmd: C:\ProgramData\anaconda3\python.exe src/prepare.py
     deps:
       - src/prepare.py
       - data/telecomchurn.csv
@@ -11,7 +11,7 @@ stages:
       - data/processed/test.csv
 
   train:
-    cmd: python src/train.py
+    cmd: C:\ProgramData\anaconda3\python.exe src/train.py
     deps:
       - src/train.py
       - data/processed/train.csv
@@ -21,7 +21,7 @@ stages:
       - models/model.pkl
 
   evaluate:
-    cmd: python src/evaluate.py
+    cmd: C:\ProgramData\anaconda3\python.exe src/evaluate.py
     deps:
       - src/evaluate.py
       - data/processed/test.csv
