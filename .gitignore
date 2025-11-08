@@ -1,0 +1,28 @@
+# DVC - only track .dvc files, not actual data
+/data/telecomchurn.csv
+/data/processed
+/models
+*.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# DVC
+.dvc/tmp
+.dvc/cache
