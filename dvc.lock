@@ -5,12 +5,12 @@ stages:
     deps:
     - path: data/telecomchurn.csv
       hash: md5
-      md5: 6c12fa0b9ae35780943fa0bc5b34ec93
-      size: 36711
+      md5: 070aa9c9cf9383a2cd7430794a5ea3c7
+      size: 36600
     - path: src/prepare.py
       hash: md5
-      md5: 9e3e35cbaddb05da98e83b622227506d
-      size: 802
+      md5: c63c82ac2247a3fb774c68907e7fdfda
+      size: 782
     params:
       params.yaml:
         prepare:
@@ -19,19 +19,19 @@ stages:
     outs:
     - path: data/processed/test.csv
       hash: md5
-      md5: b99233b7d2b74f4b747c337fca7ee91b
-      size: 6649
+      md5: 489a82effac74312f47939644a7a163e
+      size: 6621
     - path: data/processed/train.csv
       hash: md5
-      md5: cdc1dfeaa34adc8cc0baa684ee50ca98
-      size: 26181
+      md5: 37a6463184ab7b684538be35231a3e61
+      size: 26110
   train:
     cmd: C:\ProgramData\anaconda3\python.exe src/train.py
     deps:
     - path: data/processed/train.csv
       hash: md5
-      md5: cdc1dfeaa34adc8cc0baa684ee50ca98
-      size: 26181
+      md5: 37a6463184ab7b684538be35231a3e61
+      size: 26110
     - path: src/train.py
       hash: md5
       md5: 2a8b5308d7ac4de78fa97d40f2223bd9
@@ -46,19 +46,19 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 7130a790a4915208eba043c36455395c
-      size: 7013342
+      md5: ed339f860e930a0c0e58a77209fa9f13
+      size: 7086695
   evaluate:
     cmd: C:\ProgramData\anaconda3\python.exe src/evaluate.py
     deps:
     - path: data/processed/test.csv
       hash: md5
-      md5: b99233b7d2b74f4b747c337fca7ee91b
-      size: 6649
+      md5: 489a82effac74312f47939644a7a163e
+      size: 6621
     - path: models/model.pkl
       hash: md5
-      md5: 7130a790a4915208eba043c36455395c
-      size: 7013342
+      md5: ed339f860e930a0c0e58a77209fa9f13
+      size: 7086695
     - path: src/evaluate.py
       hash: md5
       md5: 46c6b28396211597132dd017ba9a1cd6
@@ -70,5 +70,5 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: 232fc21a164a9517bbc27eec210e0b56
+      md5: bfb5ce6ba92bc1a93da95190f3aaef35
       size: 144

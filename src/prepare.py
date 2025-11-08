@@ -8,8 +8,6 @@ with open('params.yaml', 'r') as f:
 
 df = pd.read_csv('data/telecomchurn.csv')
 
-df = df.dropna()
-
 X = df.drop('custcat', axis=1)
 y = df['custcat']
 
