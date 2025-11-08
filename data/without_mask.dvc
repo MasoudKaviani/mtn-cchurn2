@@ -1,0 +1,6 @@
+outs:
+- md5: f3b8ff37f65258ba15169a9157ec3d7e.dir
+  size: 274593
+  nfiles: 9
+  hash: md5
+  path: without_mask
