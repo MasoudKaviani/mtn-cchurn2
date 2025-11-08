@@ -1,6 +1,6 @@
 outs:
-- md5: c8540f4ad473b123efeeec5a13a74868.dir
-  size: 520524
-  nfiles: 8
+- md5: 39a3369be561ea964359398d6224c9c8.dir
+  size: 592610
+  nfiles: 9
   hash: md5
   path: with_mask
